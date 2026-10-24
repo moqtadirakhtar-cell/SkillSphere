@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="SkillSphere helps students study smarter, build skills, and turn ideas into projects.">
+  <title>SkillSphere — Learn. Build. Grow.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="background-glow glow-one" aria-hidden="true"></div>
+  <div class="background-glow glow-two" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SkillSphere home">
+      <span class="brand-mark">S</span><span>Skill<span class="brand-accent">Sphere</span></span>
+    </a>
+    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#study">Study</a><a href="#skills">Skills</a>
+      <a href="#coach">AI Coach</a><a href="#projects">Projects</a><a href="#business">Business</a>
+    </nav>
+    <button class="icon-button theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR FUTURE STARTS HERE</div>
+        <h1>Learn new skills.<br><span class="gradient-text">Build your future.</span></h1>
+        <p class="hero-lede">One platform to study smarter, explore technology, build projects, and turn your ideas into something real.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#study">Start learning <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="#projects">Explore projects</a>
+        </div>
+        <div class="hero-points">
+          <div><span class="point-icon">📚</span><span>Study</span></div>
+          <div><span class="point-icon">💻</span><span>Build</span></div>
+          <div><span class="point-icon">🚀</span><span>Grow</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <article class="journey-card">
+          <div class="rocket-orb">🚀</div>
+          <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+          <h2>Small steps.<br>Big dreams.</h2>
+          <div class="progress-track"><span></span></div>
+          <div class="progress-caption"><span>Today’s momentum</span><strong>Keep going!</strong></div>
+          <div class="mini-badge"><span class="mini-badge-icon">✦</span> Curiosity looks good on you</div>
+        </article>
+        <div class="floating-chip chip-top">✨ Keep learning</div>
+        <div class="floating-chip chip-bottom">⚡ Make something real</div>
+      </div>
+    </section>
+    
+
+    <section class="section-wrap section-block" id="study">
+      <div class="section-heading reveal">
+        <p class="eyebrow">LEARN SMARTER</p><h2>Your study space<span class="heading-dot">.</span></h2>
+        <p>Understand concepts, practise questions, and build confidence one topic at a time.</p>
+      </div>
+      <div class="card-grid three-col">
+        <article class="feature-card reveal"><div class="feature-icon icon-violet">📖</div><span class="card-kicker">01 / LEARN</span><h3>Make it simple</h3><p>Break challenging topics into small, understandable explanations.</p><a class="text-link" href="#coach">Ask the Coach <span>→</span></a></article>
+        <article class="feature-card reveal"><div class="feature-icon icon-teal">✍️</div><span class="card-kicker">02 / PRACTISE</span><h3>Learn by doing</h3><p>Use short activities and quizzes to check what you understand.</p><a class="text-link" href="#quiz">Try a quiz <span>→</span></a></article>
+        <article class="feature-card reveal"><div class="feature-icon icon-orange">🎯</div><span class="card-kicker">03 / REVISE</span><h3>Remember more</h3><p>Review key ideas and revisit difficult parts at your own pace.</p><a class="text-link" href="#quiz">Test yourself <span>→</span></a></article>
+      </div>
+    </section>
+
+    <section class="section-block section-muted" id="skills">
+      <div class="section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">LEVEL UP</p><h2>Skills for tomorrow<span class="heading-dot">.</span></h2><p>Start with the basics. Grow through projects, practice, and curiosity.</p></div>
+        <div class="card-grid three-col">
+          <article class="skill-card reveal"><div class="skill-card-top"><span class="skill-symbol">⌘</span><span class="skill-level">BEGINNER</span></div><h3>Web development</h3><p>Learn HTML, CSS, and JavaScript by making your own websites.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JS</span></div></article>
+          <article class="skill-card reveal"><div class="skill-card-top"><span class="skill-symbol">✳</span><span class="skill-level">EXPLORE</span></div><h3>Artificial intelligence</h3><p>Understand AI, ask better questions, and check its answers carefully.</p><div class="skill-tags"><span>AI basics</span><span>Prompting</span></div></article>
+          <article class="skill-card reveal"><div class="skill-card-top"><span class="skill-symbol">↗</span><span class="skill-level">EVERY DAY</span></div><h3>Problem solving</h3><p>Spot everyday problems and design thoughtful, useful solutions.</p><div class="skill-tags"><span>Ideas</span><span>Logic</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap section-block" id="coach">
+      <div class="section-heading reveal"><p class="eyebrow">YOUR LEARNING ASSISTANT</p><h2>Meet your AI Coach<span class="heading-dot">.</span></h2><p><p>Ask questions, practise coding, and keep learning with SkillSphere Coach.</p></p></div>
+      <div class="coach-shell reveal">
+        <div class="coach-top"><div class="coach-avatar">✦</div><div><strong>SkillSphere Coach</strong><p><span class="status-dot"></span> <span id="coachStatus">Demo mode · Ready to help</span></p></div><button id="clearChat" class="quiet-button" type="button">Clear chat</button></div>
+        <div class="suggestion-row" aria-label="Suggested questions"><button type="button" class="suggestion" data-prompt="Explain photosynthesis in simple words">Explain photosynthesis</button><button type="button" class="suggestion" data-prompt="What is HTML?">What is HTML?</button><button type="button" class="suggestion" data-prompt="Give me a study plan for today">Study plan</button></div>
+        <div class="chat-messages" id="chatMessages" aria-live="polite"><div class="chat-message bot-message"><span class="message-avatar">✦</span><div class="message-bubble">Hey there! 👋 I’m your learning companion. Ask a question, or choose one of the ideas above to get started.</div></div></div>
+        <form class="chat-form" id="chatForm"><label class="sr-only" for="chatInput">Your question</label><input id="chatInput" name="question" maxlength="1000" autocomplete="off" placeholder="Ask a learning question..." required><button class="button button-primary" type="submit">Send <span>↑</span></button></form>
+        <p class="privacy-note">Learning demo only. Don’t share passwords, addresses, or other private information.</p>
+      </div>
+    </section>
+
+    <section class="section-block section-muted" id="quiz">
+      <div class="section-wrap">
+        <div class="section-heading reveal"><p class="eyebrow">A QUICK CHALLENGE</p><h2>Give your brain a boost<span class="heading-dot">.</span></h2><p>One quick question. Instant feedback. Keep your curiosity switched on.</p></div>
+        <div class="quiz-panel reveal"><div class="quiz-meta"><span class="quiz-label">WEB BASICS</span><span id="quizCount">QUESTION 1 / 5</span></div><div class="quiz-progress"><span id="quizProgress"></span></div><h3 id="quizQuestion">Which language gives a webpage its structure?</h3><div class="quiz-options" id="quizOptions"></div><div class="quiz-bottom"><p id="quizFeedback" aria-live="polite">Choose the best answer to continue.</p><button class="button button-secondary" id="nextQuestion" type="button" disabled>Next question →</button></div></div>
+      </div>
+    </section>
+
+    <section class="section-wrap section-block" id="projects">
+      <div class="section-heading reveal"><p class="eyebrow">LEARN BY BUILDING</p><h2>Ideas into projects<span class="heading-dot">.</span></h2><p>Small projects are how big skills begin. Pick an idea and start experimenting.</p></div>
+      <div class="card-grid three-col">
+        <article class="project-card reveal"><div class="project-art art-purple"><span>🌐</span><small>PROJECT 01</small></div><div class="project-body"><div class="project-meta"><span>HTML + CSS</span><span>↗</span></div><h3>Personal portfolio</h3><p>Create a home for your skills, projects, and achievements.</p></div></article>
+        <article class="project-card reveal"><div class="project-art art-green"><span>🧩</span><small>PROJECT 02</small></div><div class="project-body"><div class="project-meta"><span>JAVASCRIPT</span><span>↗</span></div><h3>Quiz application</h3><p>Build questions, track scores, and give instant feedback.</p></div></article>
+        <article class="project-card reveal"><div class="project-art art-orange"><span>🤖</span><small>PROJECT 03</small></div><div class="project-body"><div class="project-meta"><span>AI CONCEPTS</span><span>↗</span></div><h3>Study assistant</h3><p>Design a helpful tool that supports student learning.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section-wrap section-block" id="business">
+      <div class="business-panel reveal"><div class="business-copy"><p class="eyebrow">IDEAS INTO ACTION</p><h2>Think like a builder.<br><span class="gradient-text">Help solve a problem.</span></h2><p>Start with something small: notice a problem, design a solution, test your idea, and improve it from feedback. You don’t need a big budget to begin learning.</p><a class="button button-primary" href="#projects">Explore project ideas ↗</a></div><div class="steps-list"><div><span>01</span><strong>Find a real problem</strong><i>↓</i></div><div><span>02</span><strong>Sketch a solution</strong><i>↓</i></div><div><span>03</span><strong>Build a prototype</strong><i>↓</i></div><div><span>04</span><strong>Ask for feedback</strong><i>✦</i></div></div></div>
+    </section>
+    
+<section id="notes" class="section-wrap section-block">
+  <div class="section-heading">
+    <p class="eyebrow">YOUR STUDY SPACE</p>
+    <h2>My Study Notes<span class="heading-dot">.</span></h2>
+    <p>Apne notes likho aur save karo.</p>
+  </div>
+
+  <div class="notes-panel">
+    <input id="noteTitle" type="text"
+      placeholder="Note ka title..." maxlength="80">
+
+    <textarea id="noteContent" rows="5"
+      placeholder="Yahan apne notes likho..."></textarea>
+
+    <button class="button button-primary" id="saveNote"
+      type="button">Save Note</button>
+
+    <p id="noteStatus" aria-live="polite"></p>
+    <div id="notesList"></div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">S</span><span>Skill<span class="brand-accent">Sphere</span></span></a><p>Stay curious. Keep building. ✨</p><span class="footer-copy">© <span id="currentYear"></span> SkillSphere · Made for learners</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- SkillSphere: All-in-One Learning Hub -->
+<section id="learning-hub" class="learning-hub">
+  <h2>🚀 Explore SkillSphere</h2>
+  <p>Learn smarter. Build skills. Create your future.</p>
+
+  <div class="hub-grid">
+    <article class="hub-card">
+      <h3>📚 Study Hub</h3>
+      <p>Learn school subjects in simple words.</p>
+      <input id="study-question" placeholder="Ask a study question">
+      <button onclick="askHubAI('study-question')">Ask AI Coach</button>
+      <div id="study-answer" class="hub-answer"></div>
+    </article>
+
+    <article class="hub-card">
+      <h3>🧠 Quiz & Test</h3>
+      <p>Test your knowledge!</p>
+      <p id="quiz-question">Which language structures a web page?</p>
+      <button onclick="checkQuiz('HTML')">HTML</button>
+      <button onclick="checkQuiz('CSS')">CSS</button>
+      <button onclick="checkQuiz('Python')">Python</button>
+      <p id="quiz-result" aria-live="polite"></p>
+      <button onclick="nextQuiz()">Next question</button>
+      <p id="quiz-score">Score: 0</p>
+    </article>
+
+    <article class="hub-card">
+      <h3>🚀 Skills Academy</h3>
+      <p>Choose a skill to practise.</p>
+      <button onclick="showLesson('HTML')">Learn HTML</button>
+      <button onclick="showLesson('CSS')">Learn CSS</button>
+      <button onclick="showLesson('JavaScript')">Learn JavaScript</button>
+      <div id="skill-lesson" class="hub-answer"></div>
+    </article>
+
+    <article class="hub-card">
+      <h3>💰 Earning Lab</h3>
+      <p>Build skills before building a business.</p>
+      <ul>
+        <li>Learn web design for free.</li>
+        <li>Create sample websites.</li>
+        <li>Find problems you can solve.</li>
+        <li>Ask a parent or guardian before paid work.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<style>
+.learning-hub {
+  padding: 32px 16px;
+  margin: 24px auto;
+  max-width: 1100px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #10172a, #202c50);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.learning-hub h2 { text-align: center; }
+.learning-hub > p { text-align: center; color: #cbd5e1; }
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.hub-card {
+  background: #ffffff12;
+  border: 1px solid #ffffff25;
+  border-radius: 16px;
+  padding: 18px;
+  overflow-wrap: anywhere;
+}
+.hub-card button {
+  margin: 5px 3px;
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #6d8cff;
+  color: white;
+  cursor: pointer;
+}
+.hub-card button:hover { background: #4f65d8; }
+.hub-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+.hub-answer { margin-top: 12px; white-space: pre-wrap; }
+</style>
+
+<script>
+async function askHubAI(inputId) {
+  const input = document.getElementById(inputId);
+  const output = document.getElementById("study-answer");
+  const question = input.value.trim();
+
+  if (!question) {
+    output.textContent = "Pehle apna question likho.";
+    return;
+  }
+
+  output.textContent = "AI soch raha hai...";
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "AI request failed");
+    output.textContent = data.answer || "Koi answer nahi mila.";
+  } catch (error) {
+    output.textContent = "AI se connection nahi hua. Server check karo.";
+  }
+}
+
+const lessons = {
+  HTML: "HTML webpage ka structure banata hai. Example: <h1>Hello</h1>",
+  CSS: "CSS webpage ko style karta hai. Example: color: blue;",
+  JavaScript: "JavaScript webpage ko interactive banata hai. Example: button clicks."
+};
+
+function showLesson(skill) {
+  document.getElementById("skill-lesson").textContent = lessons[skill];
+}
+
+const quizzes = [
+  { q: "Which language structures a web page?", options: ["HTML", "CSS", "Python"], answer: "HTML" },
+  { q: "Which language styles a web page?", options: ["HTML", "CSS", "SQL"], answer: "CSS" },
+  { q: "Which language adds browser interactivity?", options: ["CSS", "JavaScript", "HTML"], answer: "JavaScript" }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function renderQuiz() {
+  const quiz = quizzes[quizIndex];
+  document.getElementById("quiz-question").textContent = quiz.q;
+  document.getElementById("quiz-result").textContent = "";
+  document.getElementById("quiz-score").textContent = "Score: " + quizScore;
+  quizAnswered = false;
+
+  const card = document.getElementById("quiz-question").parentElement;
+  const buttons = card.querySelectorAll("button");
+  quiz.options.forEach((option, i) => buttons[i].textContent = option);
+}
+
+function checkQuiz(choice) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const quiz = quizzes[quizIndex];
+  const correct = choice === quiz.answer;
+  if (correct) quizScore++;
+  document.getElementById("quiz-result").textContent =
+    correct ? "Correct! 🎉" : "Not quite. Answer: " + quiz.answer;
+  document.getElementById("quiz-score").textContent =
+    "Score: " + quizScore + " / " + (quizIndex + 1);
+}
+
+function nextQuiz() {
+  quizIndex = (quizIndex + 1) % quizzes.length;
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
