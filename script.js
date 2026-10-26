@@ -90,3 +90,60 @@ if (chatForm && chatInput && chatMessages && coachStatus) {
     "AI Coach elements nahi mile. index.html mein chatForm, chatInput, chatMessages aur coachStatus IDs check karo."
   );
 }
+// SkillSphere Notes
+const noteTitle = document.getElementById("noteTitle");
+const noteContent = document.getElementById("noteContent");
+const saveNote = document.getElementById("saveNote");
+const notesList = document.getElementById("notesList");
+const noteStatus = document.getElementById("noteStatus");
+
+let notes = JSON.parse(localStorage.getItem("skillsphereNotes") || "[]");
+
+function renderNotes() {
+  notesList.innerHTML = "";
+
+  notes.forEach((note, index) => {
+    const item = document.createElement("div");
+    item.className = "note-card";
+
+    const title = document.createElement("h3");
+    title.textContent = note.title || "Untitled";
+
+    const content = document.createElement("p");
+    content.textContent = note.content;
+
+    const remove = document.createElement("button");
+    remove.textContent = "Delete";
+    remove.type = "button";
+    remove.addEventListener("click", () => {
+      notes.splice(index, 1);
+      localStorage.setItem("skillsphereNotes", JSON.stringify(notes));
+      renderNotes();
+    });
+
+    item.append(title, content, remove);
+    notesList.appendChild(item);
+  });
+}
+
+if (saveNote && noteTitle && noteContent && notesList) {
+  saveNote.addEventListener("click", () => {
+    const title = noteTitle.value.trim();
+    const content = noteContent.value.trim();
+
+    if (!title && !content) {
+      if (noteStatus) noteStatus.textContent = "Pehle note likho.";
+      return;
+    }
+
+    notes.push({ title, content });
+    localStorage.setItem("skillsphereNotes", JSON.stringify(notes));
+
+    noteTitle.value = "";
+    noteContent.value = "";
+    if (noteStatus) noteStatus.textContent = "Note saved!";
+    renderNotes();
+  });
+
+  renderNotes();
+}
