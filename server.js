@@ -155,6 +155,10 @@ app.post("/api/chat", async (req, res) => {
     });
   }
 });
+app.get("/sitemap.xml", (req, res) => {
+  res.type("application/xml");
+  res.sendFile(path.join(__dirname, "sitemap.xml"));
+});
 
 app.listen(PORT, () => {
   console.log(`SkillSphere running at http://localhost:${PORT}`);
