@@ -14,6 +14,11 @@ const TEXT_MODEL = process.env.GEMINI_MODEL;
 
 app.use(express.json({ limit: "20kb" }));
 app.use(express.static(path.join(__dirname, "public")));
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.sendFile(path.join(__dirname, "robots.txt"));
+});
+
 
 // Agar index.html project ke main folder mein hai,
 // to public folder ki jagah project folder serve karo.
