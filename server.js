@@ -6,6 +6,11 @@ const path = require("path");
 const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
+// Log every incoming request
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.originalUrl}`);
+  next();
+});
 const PORT = process.env.PORT || 3000;
 
 // Model ka naam .env file se set kar sakte ho.
