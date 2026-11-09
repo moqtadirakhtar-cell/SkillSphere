@@ -6,30 +6,58 @@ const path = require("path");
 const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
-// Log every incoming request
+const PORT = process.env.PORT || 3000;
+
+const TEXT_MODEL = process.env.GEMINI_MODEL;
+
+// Request logging
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
   next();
 });
-const PORT = process.env.PORT || 3000;
 
-// Model ka naam .env file se set kar sakte ho.
-// Apne Google AI Studio mein available model ID use karo.
-const TEXT_MODEL = process.env.GEMINI_MODEL;
-
+// JSON support
 app.use(express.json({ limit: "20kb" }));
-app.use(express.static(path.join(__dirname, "public")));
+
+// ==========================================
+// GOOGLE SEARCH ENGINE - SEO ROUTES
+// ==========================================
+
+// robots.txt
 app.get("/robots.txt", (req, res) => {
+  res.set("Cache-Control", "no-store");
   res.type("text/plain");
-  res.sendFile(path.join(__dirname, "robots.txt"));
+
+  res.send(
+    "User-agent: *\n" +
+    "Allow: /\n\n" +
+    "Sitemap: https://skillsphere-1fzr.onrender.com/sitemap.xml"
+  );
 });
 
+// sitemap.xml
+app.get("/sitemap.xml", (req, res) => {
+  res.set("Cache-Control", "no-store");
+  res.type("application/xml");
 
-// Agar index.html project ke main folder mein hai,
-// to public folder ki jagah project folder serve karo.
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://skillsphere-1fzr.onrender.com/</loc>
+  </url>
+</urlset>`);
+});
+
+// ==========================================
+// WEBSITE FILES
+// ==========================================
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
+
 app.get("/style.css", (req, res) => {
   res.sendFile(path.join(__dirname, "style.css"));
 });
@@ -38,6 +66,10 @@ app.get("/script.js", (req, res) => {
   res.sendFile(path.join(__dirname, "script.js"));
 });
 
+// ==========================================
+// HEALTH CHECK
+// ==========================================
+
 app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
@@ -45,8 +77,13 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+// ==========================================
+// AI STUDENT COACH
+// ==========================================
+
 app.post("/api/chat", async (req, res) => {
   console.log("POST /api/chat received");
+
   try {
     const question = req.body?.question;
 
@@ -96,7 +133,6 @@ app.post("/api/chat", async (req, res) => {
       ]
     });
 
-    // Google GenAI SDK ke text output ko safely read karo.
     const answer =
       typeof result.text === "string"
         ? result.text.trim()
@@ -117,11 +153,9 @@ app.post("/api/chat", async (req, res) => {
     }
 
     return res.json({ answer });
+
   } catch (error) {
-    console.error(
-      "AI backend error:",
-      error?.message || error
-    );
+    console.error("AI backend error:", error?.message || error);
     console.error(error);
 
     const message = String(error?.message || "");
@@ -145,7 +179,7 @@ app.post("/api/chat", async (req, res) => {
     ) {
       return res.status(502).json({
         error:
-          "API key reject hui. .env mein key aur uski permissions check karo."
+          "API key reject hui. .env mein key aur permissions check karo."
       });
     }
 
@@ -165,12 +199,13 @@ app.post("/api/chat", async (req, res) => {
     });
   }
 });
-app.get("/sitemap.xml", (req, res) => {
-  res.type("application/xml");
-  res.sendFile(path.join(__dirname, "sitemap.xml"));
-});
+
+// ==========================================
+// START SERVER
+// ==========================================
 
 app.listen(PORT, () => {
-  console.log(`SkillSphere running at http://localhost:${PORT}`);
+  console.log(`SkillSphere running on port ${PORT}`);
   console.log(`Text model: ${TEXT_MODEL || "not configured"}`);
+  console.log("SEO routes: robots.txt and sitemap.xml enabled");
 });
