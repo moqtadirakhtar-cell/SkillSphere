@@ -1,7 +1,7 @@
 
 // ==========================================
 // SKILLSPHERE - MAIN JAVASCRIPT
-// AI COACH + NOTES + MAIN QUIZ
+// AI COACH + NOTES + QUIZ
 // ==========================================
 
 const $ = (selector, parent = document) =>
@@ -27,6 +27,7 @@ function addChatMessage(text, role) {
 
   message.appendChild(bubble);
   chatMessages.appendChild(message);
+
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
   return message;
@@ -51,26 +52,32 @@ async function askCoach(question) {
       return data.error || `Server error: ${response.status}`;
     }
 
-    if (typeof data.answer !== "string" || !data.answer.trim()) {
+    if (!data.answer || typeof data.answer !== "string") {
       coachStatus.textContent = "Empty AI response";
       return "AI se readable answer nahi mila. Dobara try karo.";
     }
 
     coachStatus.textContent = "AI connected";
+
     return data.answer.trim();
 
   } catch (error) {
     console.error("AI Coach error:", error);
+
     coachStatus.textContent = "Connection failed";
-    return "Server se connection nahi ho paya.";
+
+    return "Server se connection nahi ho paya. Terminal mein error check karo.";
   }
 }
 
 if (chatForm && chatInput && chatMessages && coachStatus) {
+
   chatForm.addEventListener("submit", async (event) => {
+
     event.preventDefault();
 
     const question = chatInput.value.trim();
+
     if (!question) return;
 
     addChatMessage(question, "user");
@@ -79,23 +86,32 @@ if (chatForm && chatInput && chatMessages && coachStatus) {
     chatInput.disabled = true;
 
     const waiting = addChatMessage("Soch raha hoon...", "bot");
+
     const sendButton = $('button[type="submit"]', chatForm);
 
     if (sendButton) sendButton.disabled = true;
 
     try {
+
       const answer = await askCoach(question);
+
       waiting.querySelector(".message-bubble").textContent = answer;
 
     } catch (error) {
+
       console.error(error);
+
       waiting.querySelector(".message-bubble").textContent =
         "Unexpected error. Terminal check karo.";
 
     } finally {
+
       chatInput.disabled = false;
+
       if (sendButton) sendButton.disabled = false;
+
       chatInput.focus();
+
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   });
@@ -106,31 +122,34 @@ if (chatForm && chatInput && chatMessages && coachStatus) {
 // 2. SKILLSPHERE NOTES
 // ==========================================
 
-const noteTitle = $("#noteTitle");
-const noteContent = $("#noteContent");
-const saveNote = $("#saveNote");
-const notesList = $("#notesList");
-const noteStatus = $("#noteStatus");
+const noteTitle = document.getElementById("noteTitle");
+const noteContent = document.getElementById("noteContent");
+const saveNote = document.getElementById("saveNote");
+const notesList = document.getElementById("notesList");
+const noteStatus = document.getElementById("noteStatus");
 
 let notes = [];
 
 try {
-  notes = JSON.parse(localStorage.getItem("skillsphereNotes") || "[]");
+  notes = JSON.parse(
+    localStorage.getItem("skillsphereNotes") || "[]"
+  );
 
-  if (!Array.isArray(notes)) {
-    notes = [];
-  }
+  if (!Array.isArray(notes)) notes = [];
+
 } catch (error) {
   console.error("Notes loading error:", error);
   notes = [];
 }
 
 function renderNotes() {
+
   if (!notesList) return;
 
   notesList.innerHTML = "";
 
   notes.forEach((note, index) => {
+
     const item = document.createElement("div");
     item.className = "note-card";
 
@@ -141,10 +160,12 @@ function renderNotes() {
     content.textContent = note.content || "";
 
     const remove = document.createElement("button");
+
     remove.textContent = "Delete";
     remove.type = "button";
 
     remove.addEventListener("click", () => {
+
       notes.splice(index, 1);
 
       localStorage.setItem(
@@ -153,22 +174,31 @@ function renderNotes() {
       );
 
       renderNotes();
+
+      if (noteStatus) {
+        noteStatus.textContent = "Note deleted.";
+      }
     });
 
     item.append(title, content, remove);
+
     notesList.appendChild(item);
   });
 }
 
 if (saveNote && noteTitle && noteContent && notesList) {
+
   saveNote.addEventListener("click", () => {
+
     const title = noteTitle.value.trim();
     const content = noteContent.value.trim();
 
     if (!title && !content) {
+
       if (noteStatus) {
         noteStatus.textContent = "Pehle note likho.";
       }
+
       return;
     }
 
@@ -198,244 +228,230 @@ if (saveNote && noteTitle && noteContent && notesList) {
 // ==========================================
 
 const mainQuizQuestions = [
+
   {
     question: "Which language gives a webpage its structure?",
-    options: ["HTML", "CSS", "JavaScript", "Python"],
+    options: ["CSS", "HTML", "JavaScript", "Python"],
     answer: "HTML"
   },
+
   {
-    question: "Which language is used to style a webpage?",
-    options: ["HTML", "CSS", "Python", "SQL"],
+    question: "Which language styles a webpage?",
+    options: ["HTML", "CSS", "SQL", "Python"],
     answer: "CSS"
   },
+
   {
-    question: "Which language adds interactivity to a webpage?",
-    options: ["HTML", "CSS", "JavaScript", "XML"],
+    question: "Which language adds interactivity to webpages?",
+    options: ["JavaScript", "HTML", "CSS", "XML"],
     answer: "JavaScript"
   },
-  {
-    question: "What does CSS stand for?",
-    options: [
-      "Creative Style System",
-      "Cascading Style Sheets",
-      "Computer Style Setup",
-      "Colorful Style Sheets"
-    ],
-    answer: "Cascading Style Sheets"
-  },
-  {
-    question: "Which HTML tag creates a hyperlink?",
-    options: ["<p>", "<img>", "<a>", "<h1>"],
-    answer: "<a>"
-  }
-];
 
-const quizQuestion = $("#quizQuestion");
-const quizOptions = $("#quizOptions");
-const quizCount = $("#quizCount");
-const quizProgress = $("#quizProgress");
-const quizFeedback = $("#quizFeedback");
-const nextQuestion = $("#nextQuestion");
+  {
+    question: "Which HTML tag creates a paragraph?",
+    options: ["<h1>", "<p>", "<br>", "<img>"],
+    answer: "<p>"
+  },
+
+  {
+    question: "Which CSS property changes text color?",
+    options: ["font-size", "background", "color", "margin"],
+    answer: "color"
+  }
+
+];
 
 let mainQuizIndex = 0;
 let mainQuizScore = 0;
 let mainQuizAnswered = false;
 
-function updateQuizProgress() {
-  if (quizCount) {
-    quizCount.textContent =
-      `QUESTION ${mainQuizIndex + 1} / ${mainQuizQuestions.length}`;
-  }
+const quizQuestion = document.getElementById("quizQuestion");
+const quizCount = document.getElementById("quizCount");
+const quizProgress = document.getElementById("quizProgress");
+const quizFeedback = document.getElementById("quizFeedback");
+const quizOptions = document.getElementById("quizOptions");
+const nextQuestion = document.getElementById("nextQuestion");
 
-  if (quizProgress) {
-    quizProgress.style.width =
-      `${((mainQuizIndex + 1) / mainQuizQuestions.length) * 100}%`;
-  }
-}
+function renderMainQuiz() {
 
-function loadMainQuiz() {
-  if (!quizQuestion || !quizOptions) {
-    console.error("Main Quiz HTML elements nahi mile.");
+  if (
+    !quizQuestion ||
+    !quizCount ||
+    !quizProgress ||
+    !quizFeedback ||
+    !quizOptions ||
+    !nextQuestion
+  ) {
+    console.error("Quiz HTML elements nahi mile. Check index.html IDs.");
     return;
   }
 
-  const current = mainQuizQuestions[mainQuizIndex];
+  const question = mainQuizQuestions[mainQuizIndex];
 
-  mainQuizAnswered = false;
+  quizQuestion.textContent = question.question;
 
-  quizQuestion.textContent = current.question;
+  quizCount.textContent =
+    `QUESTION ${mainQuizIndex + 1} / ${mainQuizQuestions.length}`;
+
+  quizProgress.style.width =
+    `${(mainQuizIndex / mainQuizQuestions.length) * 100}%`;
+
+  quizFeedback.textContent =
+    "Choose the best answer to continue.";
+
   quizOptions.innerHTML = "";
 
-  // Make answer options visible
-  quizOptions.style.display = "grid";
-  quizOptions.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
-  quizOptions.style.gap = "12px";
-  quizOptions.style.marginTop = "20px";
+  question.options.forEach((option) => {
 
-  current.options.forEach((option) => {
     const button = document.createElement("button");
 
     button.type = "button";
     button.className = "quiz-option";
     button.textContent = option;
 
-    button.style.display = "block";
-    button.style.width = "100%";
-    button.style.padding = "14px";
-    button.style.border = "1px solid #59617a";
-    button.style.borderRadius = "12px";
-    button.style.background = "#1b2238";
-    button.style.color = "#ffffff";
-    button.style.cursor = "pointer";
-    button.style.fontSize = "15px";
-
     button.addEventListener("click", () => {
-      checkMainQuizAnswer(option, button);
+      checkMainAnswer(option, button);
     });
 
     quizOptions.appendChild(button);
   });
 
-  if (quizFeedback) {
-    quizFeedback.textContent = "Choose the best answer to continue.";
-  }
+  mainQuizAnswered = false;
 
-  if (nextQuestion) {
-    nextQuestion.disabled = true;
-    nextQuestion.textContent = "Next question →";
-  }
-
-  updateQuizProgress();
+  nextQuestion.disabled = true;
+  nextQuestion.textContent = "Next question →";
 }
 
-function checkMainQuizAnswer(selected, selectedButton) {
+function checkMainAnswer(selected, selectedButton) {
+
   if (mainQuizAnswered) return;
 
   mainQuizAnswered = true;
 
-  const current = mainQuizQuestions[mainQuizIndex];
+  const question = mainQuizQuestions[mainQuizIndex];
+
   const buttons = quizOptions.querySelectorAll("button");
 
   buttons.forEach((button) => {
-    button.disabled = true;
-    button.style.cursor = "default";
 
-    if (button.textContent === current.answer) {
-      button.style.background = "#14532d";
-      button.style.borderColor = "#22c55e";
+    button.disabled = true;
+
+    if (button.textContent === question.answer) {
+      button.classList.add("correct");
     }
   });
 
-  if (selected === current.answer) {
+  if (selected === question.answer) {
+
     mainQuizScore++;
 
-    selectedButton.style.background = "#14532d";
-
-    if (quizFeedback) {
-      quizFeedback.textContent = "Correct answer! Great work!";
-    }
+    quizFeedback.textContent =
+      "Correct! Great job! 🎉";
 
   } else {
-    selectedButton.style.background = "#7f1d1d";
 
-    if (quizFeedback) {
-      quizFeedback.textContent =
-        `Incorrect. Correct answer: ${current.answer}`;
-    }
+    selectedButton.classList.add("incorrect");
+
+    quizFeedback.textContent =
+      `Not quite! Correct answer: ${question.answer}`;
   }
 
-  if (nextQuestion) {
-    nextQuestion.disabled = false;
+  quizProgress.style.width =
+    `${((mainQuizIndex + 1) / mainQuizQuestions.length) * 100}%`;
 
-    nextQuestion.textContent =
-      mainQuizIndex === mainQuizQuestions.length - 1
-        ? "See results →"
-        : "Next question →";
-  }
+  nextQuestion.disabled = false;
 }
 
-function showMainQuizResult() {
-  quizQuestion.textContent = "Quiz completed!";
+function completeMainQuiz() {
+
+  quizQuestion.textContent = "Quiz completed! 🎉";
 
   quizOptions.innerHTML = "";
 
-  quizOptions.style.display = "block";
+  quizCount.textContent = "COMPLETED";
 
-  const result = document.createElement("h2");
-  result.textContent =
+  quizProgress.style.width = "100%";
+
+  quizFeedback.textContent =
     `Your score: ${mainQuizScore} / ${mainQuizQuestions.length}`;
 
-  result.style.color = "#22d3ee";
-  result.style.marginTop = "20px";
+  nextQuestion.textContent = "Play again ↻";
 
-  const message = document.createElement("p");
+  nextQuestion.disabled = false;
 
-  message.textContent =
-    mainQuizScore === 5
-      ? "Excellent! Perfect score!"
-      : "Good effort! Keep learning and try again.";
-
-  const restart = document.createElement("button");
-
-  restart.type = "button";
-  restart.textContent = "Play Again";
-  restart.className = "button button-primary";
-  restart.style.marginTop = "15px";
-
-  restart.addEventListener("click", restartMainQuiz);
-
-  quizOptions.append(result, message, restart);
-
-  if (quizCount) {
-    quizCount.textContent = "QUIZ COMPLETED";
-  }
-
-  if (quizProgress) {
-    quizProgress.style.width = "100%";
-  }
-
-  if (quizFeedback) {
-    quizFeedback.textContent = "Thanks for playing!";
-  }
-
-  if (nextQuestion) {
-    nextQuestion.disabled = true;
-    nextQuestion.style.display = "none";
-  }
+  mainQuizAnswered = false;
 }
 
-function goToNextQuestion() {
-  if (!mainQuizAnswered) return;
+function resetMainQuiz() {
 
-  if (mainQuizIndex < mainQuizQuestions.length - 1) {
-    mainQuizIndex++;
-    loadMainQuiz();
-
-  } else {
-    showMainQuizResult();
-  }
-}
-
-function restartMainQuiz() {
   mainQuizIndex = 0;
   mainQuizScore = 0;
   mainQuizAnswered = false;
 
-  if (nextQuestion) {
-    nextQuestion.style.display = "";
+  renderMainQuiz();
+}
+
+if (nextQuestion) {
+
+  nextQuestion.addEventListener("click", () => {
+
+    // Restart quiz after completion
+    if (mainQuizIndex >= mainQuizQuestions.length) {
+      resetMainQuiz();
+      return;
+    }
+
+    if (!mainQuizAnswered) return;
+
+    mainQuizIndex++;
+
+    if (mainQuizIndex >= mainQuizQuestions.length) {
+
+      completeMainQuiz();
+
+      return;
+    }
+
+    renderMainQuiz();
+
+  });
+}
+
+// Start quiz only when quiz section exists
+if (quizQuestion && quizOptions) {
+  renderMainQuiz();
+}
+
+console.log("SkillSphere JavaScript loaded successfully!");
+
+
+// MOBILE + DESKTOP REVEAL FIX
+
+function revealSections() {
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if (!("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => {
+      element.classList.add("is-visible");
+    });
+    return;
   }
 
-  loadMainQuiz();
-}
-
-if (nextQuestion && quizQuestion && quizOptions) {
-  nextQuestion.addEventListener("click", goToNextQuestion);
-  loadMainQuiz();
-
-} else {
-  console.error(
-    "Main Quiz elements missing. Check quizQuestion, quizOptions and nextQuestion IDs in index.html."
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05 }
   );
+
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
 }
 
-console.log("SkillSphere JavaScript loaded successfully.");
+revealSections();

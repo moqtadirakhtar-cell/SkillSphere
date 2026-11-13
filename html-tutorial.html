@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free HTML Tutorial for Beginners | SkillSphere</title>
+
+<meta name="description" content="Learn HTML for free with SkillSphere. Beginner-friendly HTML tutorial covering HTML structure, tags, headings, paragraphs, links, images, lists, forms and practical projects.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://skillsphere-1fzr.onrender.com/html-tutorial.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SkillSphere">
+<meta property="og:title" content="Free HTML Tutorial for Beginners | SkillSphere">
+<meta property="og:description" content="Learn HTML step by step with examples, exercises and a practical project.">
+<meta property="og:url" content="https://skillsphere-1fzr.onrender.com/html-tutorial.html">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free HTML Tutorial for Beginners | SkillSphere">
+<meta name="twitter:description" content="Learn HTML step by step with SkillSphere.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Free HTML Tutorial for Beginners",
+  "description": "A beginner-friendly HTML tutorial with examples, exercises and a first webpage project.",
+  "author": {
+    "@type": "Organization",
+    "name": "SkillSphere"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SkillSphere"
+  },
+  "mainEntityOfPage": "https://skillsphere-1fzr.onrender.com/html-tutorial.html",
+  "inLanguage": "en"
+}
+</script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #0b1020;
+    color: #eef3ff;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: #121d33;
+    padding: 18px 6%;
+    border-bottom: 1px solid #30405e;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #73e4d5;
+}
+
+nav a {
+    color: #c5d2eb;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+nav a:hover {
+    color: #73e4d5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.hero {
+    padding: 65px 0;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 6vw, 55px);
+    line-height: 1.2;
+}
+
+.hero p {
+    color: #bdc9df;
+    font-size: 19px;
+}
+
+.button {
+    display: inline-block;
+    background: #9aabff;
+    color: #10172b;
+    padding: 12px 20px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 8px 5px 0 0;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 25px;
+    padding-bottom: 60px;
+}
+
+.sidebar,
+.card {
+    background: #121d33;
+    border: 1px solid #30405e;
+    border-radius: 15px;
+    padding: 22px;
+}
+
+.sidebar {
+    height: max-content;
+    position: sticky;
+    top: 15px;
+}
+
+.sidebar a {
+    display: block;
+    color: #c5d2eb;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.card {
+    margin-bottom: 18px;
+}
+
+h2 {
+    color: #73e4d5;
+}
+
+h3 {
+    color: #aabaff;
+}
+
+p, li {
+    color: #bdc9df;
+}
+
+pre {
+    background: #070d19;
+    border: 1px solid #30405e;
+    border-radius: 10px;
+    padding: 18px;
+    overflow-x: auto;
+    color: #a9f1e8;
+}
+
+code {
+    color: #a9f1e8;
+}
+
+.tip {
+    background: #102d32;
+    padding: 14px;
+    border-left: 4px solid #73e4d5;
+    border-radius: 8px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.box {
+    background: #192743;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.quiz button {
+    padding: 11px 17px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid #405477;
+    background: #192743;
+    color: white;
+    cursor: pointer;
+}
+
+#feedback {
+    font-weight: bold;
+}
+
+footer {
+    background: #121d33;
+    padding: 25px;
+    text-align: center;
+    border-top: 1px solid #30405e;
+}
+
+@media(max-width: 750px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<a href="/" class="logo">Skill<span>Sphere</span></a>
+
+<div>
+<a href="/">Home</a>
+<a href="#basics">HTML Basics</a>
+<a href="#examples">Examples</a>
+<a href="#project">Project</a>
+</div>
+</nav>
+</header>
+
+<main class="container">
+
+<section class="hero">
+
+<p>FREE WEB DEVELOPMENT COURSE</p>
+
+<h1>Free HTML Tutorial for Beginners: Learn HTML Step by Step</h1>
+
+<p>
+Learn HTML from the beginning with simple explanations,
+real code examples and practical exercises. Build your
+first webpage using this beginner-friendly guide.
+</p>
+
+<a href="#basics" class="button">Start Learning</a>
+
+<a href="#quiz" class="button">Take Quiz</a>
+
+</section>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<h3>Table of Contents</h3>
+
+<a href="#basics">1. What is HTML?</a>
+<a href="#structure">2. HTML Structure</a>
+<a href="#tags">3. HTML Tags</a>
+<a href="#examples">4. Links and Images</a>
+<a href="#lists">5. Lists and Tables</a>
+<a href="#forms">6. HTML Forms</a>
+<a href="#project">7. First Project</a>
+<a href="#mistakes">8. Common Mistakes</a>
+<a href="#quiz">9. Practice Quiz</a>
+<a href="#faq">10. FAQs</a>
+
+</aside>
+
+<article>
+
+<section class="card" id="basics">
+
+<h2>1. What is HTML?</h2>
+
+<p>
+HTML stands for HyperText Markup Language.
+It is the standard markup language used to create
+and structure webpages.
+</p>
+
+<p>
+HTML tells the browser how webpage content is organised,
+including headings, paragraphs, links, images and lists.
+</p>
+
+<div class="grid">
+
+<div class="box">
+<h3>HTML</h3>
+<p>Creates the structure of a webpage.</p>
+</div>
+
+<div class="box">
+<h3>CSS</h3>
+<p>Controls colours, design and layout.</p>
+</div>
+
+<div class="box">
+<h3>JavaScript</h3>
+<p>Adds interactive features.</p>
+</div>
+
+<div class="box">
+<h3>Browser</h3>
+<p>Displays your webpage.</p>
+</div>
+
+</div>
+
+<div class="tip">
+You can start learning HTML using a free text editor
+and a web browser.
+</div>
+
+</section>
+
+<section class="card" id="structure">
+
+<h2>2. Basic HTML Structure</h2>
+
+<p>
+Every standard HTML document follows a basic structure.
+Here is a simple example:
+</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;My First Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+
+    &lt;p&gt;This is my first webpage.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<ul>
+<li><code>DOCTYPE</code> declares the HTML version.</li>
+<li><code>html</code> is the root element.</li>
+<li><code>head</code> contains page information.</li>
+<li><code>title</code> sets the browser-tab title.</li>
+<li><code>body</code> contains visible content.</li>
+</ul>
+
+</section>
+
+<section class="card" id="tags">
+
+<h2>3. Common HTML Tags</h2>
+
+<p>HTML uses tags to organise webpage content.</p>
+
+<h3>Heading Tags</h3>
+
+<pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Second Heading&lt;/h2&gt;
+&lt;h3&gt;Third Heading&lt;/h3&gt;</code></pre>
+
+<h3>Paragraph Tag</h3>
+
+<pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+<h3>Bold and Emphasis</h3>
+
+<pre><code>&lt;strong&gt;Important text&lt;/strong&gt;
+&lt;em&gt;Emphasised text&lt;/em&gt;</code></pre>
+
+<h3>Line Break</h3>
+
+<pre><code>First line&lt;br&gt;
+Second line</code></pre>
+
+</section>
+
+<section class="card" id="examples">
+
+<h2>4. How to Add Links and Images</h2>
+
+<h3>HTML Links</h3>
+
+<p>
+The anchor tag creates a clickable link.
+</p>
+
+<pre><code>&lt;a href="https://example.com"&gt;
+Visit Example
+&lt;/a&gt;</code></pre>
+
+<h3>HTML Images</h3>
+
+<p>
+The image tag displays an image on your webpage.
+</p>
+
+<pre><code>&lt;img
+src="study.jpg"
+alt="Books on a study desk"
+&gt;</code></pre>
+
+<p>
+The alt attribute provides alternative text
+for people who cannot see the image.
+</p>
+
+</section>
+
+<section class="card" id="lists">
+
+<h2>5. HTML Lists and Tables</h2>
+
+<h3>Unordered List</h3>
+
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;Science&lt;/li&gt;
+    &lt;li&gt;Mathematics&lt;/li&gt;
+    &lt;li&gt;English&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<h3>Ordered List</h3>
+
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;Learn HTML&lt;/li&gt;
+    &lt;li&gt;Learn CSS&lt;/li&gt;
+    &lt;li&gt;Learn JavaScript&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<h3>HTML Table</h3>
+
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Subject&lt;/th&gt;
+        &lt;th&gt;Hours&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Science&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+</section>
+
+<section class="card" id="forms">
+
+<h2>6. HTML Forms</h2>
+
+<p>
+Forms are used to collect information from visitors.
+Here is a simple HTML form example.
+</p>
+
+<pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;Your Name&lt;/label&gt;
+
+    &lt;input
+    type="text"
+    id="name"
+    name="name"
+    &gt;
+
+    &lt;button type="submit"&gt;
+    Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<p>
+This is only a front-end example. It does not send
+information to a server.
+</p>
+
+</section>
+
+<section class="card" id="project">
+
+<h2>7. Build Your First HTML Website</h2>
+
+<p>
+Create a file named index.html and paste this code.
+Save the file and open it in your browser.
+</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;About Me&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello! I am a student.&lt;/h1&gt;
+
+    &lt;p&gt;I am learning web development.&lt;/p&gt;
+
+    &lt;h2&gt;My Interests&lt;/h2&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;Science&lt;/li&gt;
+        &lt;li&gt;Technology&lt;/li&gt;
+        &lt;li&gt;Creative Projects&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<h3>Project Challenges</h3>
+
+<ol>
+<li>Change the website title.</li>
+<li>Add a new heading.</li>
+<li>Create a list of your learning goals.</li>
+<li>Add an image with alt text.</li>
+<li>Save and refresh the webpage.</li>
+</ol>
+
+</section>
+
+<section class="card" id="mistakes">
+
+<h2>8. Common HTML Beginner Mistakes</h2>
+
+<ul>
+<li>Forgetting required closing tags.</li>
+<li>Putting visible content inside the head element.</li>
+<li>Using headings only to change text size.</li>
+<li>Not adding useful alt text to meaningful images.</li>
+<li>Using tables for webpage layout.</li>
+<li>Forgetting to save changes before refreshing.</li>
+</ul>
+
+</section>
+
+<section class="card quiz" id="quiz">
+
+<h2>9. HTML Practice Quiz</h2>
+
+<p><strong>Question:</strong>
+Which HTML element contains visible webpage content?
+</p>
+
+<button type="button" data-answer="wrong">&lt;head&gt;</button>
+
+<button type="button" data-answer="correct">&lt;body&gt;</button>
+
+<button type="button" data-answer="wrong">&lt;title&gt;</button>
+
+<p id="feedback" aria-live="polite">
+Choose your answer.
+</p>
+
+</section>
+
+<section class="card" id="faq">
+
+<h2>10. Frequently Asked Questions</h2>
+
+<h3>What is HTML?</h3>
+<p>
+HTML stands for HyperText Markup Language.
+It structures content on webpages.
+</p>
+
+<h3>Is HTML a programming language?</h3>
+<p>
+No. HTML is a markup language, not a programming language.
+</p>
+
+<h3>Can I learn HTML for free?</h3>
+<p>
+Yes. You can practise HTML using a free text editor
+and a web browser.
+</p>
+
+<h3>What should I learn after HTML?</h3>
+<p>
+Learn CSS to style webpages and JavaScript
+to add interactive features.
+</p>
+
+<h3>How long does it take to learn HTML?</h3>
+<p>
+It depends on your practice time and learning pace.
+Build small projects to improve your understanding.
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Continue Learning with SkillSphere</h2>
+
+<p>
+Explore more learning resources and beginner-friendly
+projects on SkillSphere.
+</p>
+
+<a href="/" class="button">Explore SkillSphere</a>
+
+</section>
+
+</article>
+</div>
+</main>
+
+<footer>
+<p>SkillSphere - Free Learning Resources for Students</p>
+<a href="/">Return to Homepage</a>
+</footer>
+
+<script>
+document.querySelectorAll("#quiz button").forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const feedback = document.getElementById("feedback");
+
+        if (button.dataset.answer === "correct") {
+
+            feedback.textContent =
+            "Correct! The body element contains visible webpage content.";
+
+        } else {
+
+            feedback.textContent =
+            "Try again! The correct answer is the body element.";
+
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>

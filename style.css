@@ -203,3 +203,246 @@ h1,h2,h3 { font-family: "Space Grotesk", sans-serif; }
   color: var(--text);
   cursor: pointer;
 }
+
+/* =====================================
+   SKILLSPHERE - MOBILE RESPONSIVE FIX
+===================================== */
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+.section-wrap {
+  width: min(1120px, 90%);
+  margin-inline: auto;
+}
+
+/* Make hidden sections visible on mobile */
+@media (max-width: 700px) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .site-header {
+    width: 100%;
+    padding-inline: 4%;
+    gap: 8px;
+  }
+
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  .main-nav.open {
+    display: flex;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-top: 42px;
+    padding-bottom: 35px;
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 10vw, 3.5rem);
+    letter-spacing: -1.5px;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-lede {
+    font-size: .95rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-points {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    min-height: 350px;
+    overflow: hidden;
+  }
+
+  .journey-card {
+    width: min(320px, 88%);
+    padding: 22px;
+  }
+
+  .floating-chip {
+    font-size: .68rem;
+    padding: 8px 10px;
+  }
+
+  .section-block {
+    padding-block: 48px;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .three-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .feature-card,
+  .skill-card,
+  .project-card,
+  .notes-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .coach-shell,
+  .quiz-panel,
+  .business-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .coach-top {
+    flex-wrap: wrap;
+  }
+
+  .chat-form {
+    flex-wrap: wrap;
+  }
+
+  .chat-form input {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .chat-form .button {
+    width: 100%;
+  }
+
+  .chat-messages {
+    min-height: 150px;
+    max-height: 300px;
+  }
+
+  .message-bubble {
+    overflow-wrap: anywhere;
+  }
+
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-option {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .quiz-bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quiz-bottom .button {
+    width: 100%;
+  }
+
+  .business-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    padding: 22px;
+  }
+
+  .notes-panel {
+    padding: 16px;
+  }
+
+  .notes-panel input,
+  .notes-panel textarea {
+    font-size: 16px;
+  }
+
+  .site-footer {
+    padding: 30px 5%;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 390px) {
+  .section-wrap {
+    width: 92%;
+  }
+
+  .brand {
+    font-size: .95rem;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-visual {
+    min-height: 320px;
+  }
+
+  .journey-card {
+    padding: 18px;
+  }
+
+  .rocket-orb {
+    width: 95px;
+    height: 95px;
+    font-size: 2.8rem;
+  }
+
+  .feature-card,
+  .skill-card {
+    padding: 19px;
+  }
+}
+
+/* Prevent accidental horizontal scrolling */
+* {
+  min-width: 0;
+}
+
+button,
+.button,
+.quiz-option,
+.note-delete {
+  touch-action: manipulation;
+}
