@@ -45,6 +45,9 @@ app.get("/sitemap.xml", (req, res) => {
   <url>
     <loc>https://skillsphere-1fzr.onrender.com/</loc>
   </url>
+  <url>
+    <loc>https://skillsphere-1fzr.onrender.com/html-tutorial.html</loc>
+  </url>
 </urlset>`);
 });
 
@@ -52,14 +55,22 @@ app.get("/sitemap.xml", (req, res) => {
 // WEBSITE FILES
 // ==========================================
 
+// Original homepage
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// HTML Tutorial page
+app.get("/html-tutorial.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "html-tutorial.html"));
+});
+
+// CSS
 app.get("/style.css", (req, res) => {
   res.sendFile(path.join(__dirname, "style.css"));
 });
 
+// JavaScript
 app.get("/script.js", (req, res) => {
   res.sendFile(path.join(__dirname, "script.js"));
 });
