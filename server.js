@@ -29,6 +29,10 @@ app.get("/robots.txt", (req, res) => {
   res.type("text/plain");
 
   res.send(
+    "User-agent: Google-InspectionTool\n" +
+    "Allow: /\n\n" +
+    "User-agent: Googlebot\n" +
+    "Allow: /\n\n" +
     "User-agent: *\n" +
     "Allow: /\n\n" +
     "Sitemap: https://skillsphere-1fzr.onrender.com/sitemap.xml"
