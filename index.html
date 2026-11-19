@@ -730,8 +730,13 @@
     };
 
     function showLesson(skill) {
-      document.getElementById("skill-lesson").textContent =
-        lessons[skill];
+  if (skill === "HTML") {
+    window.location.href = "/html-tutorial.html";
+    return;
+  }
+
+  document.getElementById("skill-lesson").textContent =
+    lessons[skill];
     }
   </script>
 
