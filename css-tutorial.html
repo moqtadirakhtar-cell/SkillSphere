@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Free CSS Tutorial for Beginners | SkillSphere</title>
+<meta name="description" content="Learn CSS step by step for free. Explore selectors, colours, fonts, box model, flexbox, grid, responsive design and practise with interactive examples.">
+<link rel="canonical" href="https://skillsphere-1fzr.onrender.com/css-tutorial.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SkillSphere">
+<meta property="og:title" content="Free CSS Tutorial for Beginners | SkillSphere">
+<meta property="og:description" content="Learn CSS step by step with practical examples, a live editor and 40 quiz questions.">
+<meta property="og:url" content="https://skillsphere-1fzr.onrender.com/css-tutorial.html">
+<meta name="twitter:card" content="summary">
+
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --panel: #121d33;
+  --line: #2b3a59;
+  --txt: #edf3ff;
+  --muted: #bdc9df;
+  --cyan: #73e4d5;
+  --blue: #9aabff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 85% 0, #1b2b50, transparent 35%), var(--bg);
+  color: var(--txt);
+  font: 16px/1.7 system-ui, Arial;
+}
+
+a {
+  color: var(--cyan);
+}
+
+.wrap {
+  width: min(1080px, 92%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: #0b1020ed;
+  border-bottom: 1px solid var(--line);
+  z-index: 3;
+  backdrop-filter: blur(10px);
+}
+
+.bar {
+  min-height: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 1.3rem;
+  font-weight: 850;
+  color: white;
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--cyan);
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.hero {
+  padding: 65px 0 30px;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-size: .78rem;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  letter-spacing: -.03em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  max-width: 850px;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+h3 {
+  margin: 22px 0 8px;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 780px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  gap: 25px;
+  padding: 20px 0 60px;
+}
+
+aside, .card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+}
+
+aside {
+  padding: 18px;
+  height: max-content;
+  position: sticky;
+  top: 85px;
+}
+
+aside a {
+  display: block;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+.card {
+  padding: clamp(18px, 3vw, 28px);
+  margin-bottom: 17px;
+}
+
+p, li {
+  color: var(--muted);
+}
+
+pre {
+  overflow: auto;
+  background: #070d19;
+  border: 1px solid var(--line);
+  padding: 16px;
+  border-radius: 12px;
+  color: #e1ebff;
+  line-height: 1.55;
+}
+
+code {
+  color: #9df0e4;
+  background: #08111e;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.tip, .warn {
+  padding: 13px 16px;
+  border-radius: 9px;
+  margin: 15px 0;
+}
+
+.tip {
+  background: #102d32;
+  border-left: 4px solid var(--cyan);
+}
+
+.warn {
+  background: #302817;
+  border-left: 4px solid #ffd783;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini {
+  padding: 15px;
+  background: #192743;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.mini h3 {
+  margin: 0;
+}
+
+.btn, button {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 9px;
+  background: var(--blue);
+  color: #10172b;
+  text-decoration: none;
+  font-weight: 750;
+  border: 0;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+textarea {
+  width: 100%;
+  min-height: 190px;
+  background: #070d19;
+  color: #e1ebff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px;
+  font: 14px/1.5 monospace;
+}
+
+iframe {
+  width: 100%;
+  height: 220px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+#quizFeedback {
+  font-weight: 700;
+  min-height: 28px;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 9px 0;
+  background: #192743;
+  color: var(--txt);
+  border: 1px solid var(--line);
+}
+
+.quiz-option:hover {
+  border-color: var(--cyan);
+}
+
+.quiz-option.correct {
+  background: #164b3a;
+  color: white;
+}
+
+.quiz-option.wrong {
+  background: #63302f;
+  color: white;
+}
+
+.quiz-card {
+  padding: 17px;
+  border: 1px solid var(--line);
+  background: #192743;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.quiz-card p {
+  margin-bottom: 4px;
+}
+
+.quiz-progress {
+  height: 9px;
+  background: #070d19;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+#quizProgressBar {
+  height: 100%;
+  width: 0;
+  background: var(--cyan);
+  transition: width .2s;
+}
+
+#quizArea, #quizResult {
+  margin-top: 20px;
+}
+
+#quizResult {
+  text-align: center;
+  padding: 20px;
+  background: #192743;
+  border-radius: 12px;
+}
+
+#finalScore {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0;
+  color: var(--muted);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media(max-width: 740px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .bar {
+    padding: 10px 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">Skill<span>Sphere</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="#basics">Basics</a>
+      <a href="#examples">Examples</a>
+      <a href="#practice">Practice</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <p><a href="/">Home</a> / CSS Tutorial</p>
+  <p class="eyebrow">Free beginner web development lesson</p>
+  <h1>Free CSS Tutorial for Beginners: Learn CSS Step by Step</h1>
+  <p class="lead">Learn how to style websites using CSS. Explore colours, fonts, spacing, layouts, responsive design and practical examples.</p>
+  <a class="btn" href="#basics">Start learning</a>
+  <a class="btn" href="#quiz">Try the quiz</a>
+</section>
+
+<div class="layout">
+
+<aside>
+  <strong>On this page</strong>
+  <a href="#basics">1. What is CSS?</a>
+  <a href="#syntax">2. CSS syntax</a>
+  <a href="#selectors">3. Selectors</a>
+  <a href="#colours">4. Colours and fonts</a>
+  <a href="#box">5. Box model</a>
+  <a href="#flex">6. Flexbox</a>
+  <a href="#grid">7. CSS Grid</a>
+  <a href="#responsive">8. Responsive design</a>
+  <a href="#project">9. First project</a>
+  <a href="#practice">10. Practice editor</a>
+  <a href="#quiz">11. Quiz</a>
+  <a href="#faq">12. FAQs</a>
+</aside>
+
+<article>
+
+<section class="card" id="basics">
+  <h2>1. What is CSS?</h2>
+  <p>CSS stands for <strong>Cascading Style Sheets</strong>. It controls how HTML elements look on a webpage.</p>
+
+  <div class="grid">
+    <div class="mini"><h3>HTML</h3><p>Creates webpage structure.</p></div>
+    <div class="mini"><h3>CSS</h3><p>Controls colours, layout and design.</p></div>
+    <div class="mini"><h3>JavaScript</h3><p>Adds interactive behaviour.</p></div>
+    <div class="mini"><h3>Browser</h3><p>Displays the finished webpage.</p></div>
+  </div>
+
+  <div class="tip">HTML creates the structure, CSS makes it attractive, and JavaScript makes it interactive.</div>
+</section>
+
+<section class="card" id="syntax">
+  <h2>2. CSS syntax</h2>
+  <p>A CSS rule contains a selector and a declaration block.</p>
+
+  <pre><code>h1 {
+  color: blue;
+  font-size: 32px;
+}</code></pre>
+
+  <ul>
+    <li><strong>Selector:</strong> chooses the HTML element.</li>
+    <li><strong>Property:</strong> what you want to change.</li>
+    <li><strong>Value:</strong> the setting you choose.</li>
+  </ul>
+
+  <p>CSS can be added inline, inside a style element, or in an external .css file.</p>
+</section>
+
+<section class="card" id="selectors">
+  <h2>3. CSS selectors</h2>
+  <p>Selectors help you target HTML elements.</p>
+
+  <pre><code>/* Element selector */
+p {
+  color: white;
+}
+
+/* Class selector */
+.card {
+  background: navy;
+}
+
+/* ID selector */
+#heading {
+  font-size: 30px;
+}</code></pre>
+
+  <ul>
+    <li><code>p</code> selects paragraph elements.</li>
+    <li><code>.card</code> selects elements with class="card".</li>
+    <li><code>#heading</code> selects the element with id="heading".</li>
+  </ul>
+</section>
+
+<section class="card" id="colours">
+  <h2>4. Colours, backgrounds and fonts</h2>
+  <p>CSS can change text colour, background colour, font size and font family.</p>
+
+  <pre><code>body {
+  background-color: #10172a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: cyan;
+  font-size: 36px;
+}
+
+p {
+  line-height: 1.7;
+}</code></pre>
+
+  <div class="tip">You can use colour names, HEX values, RGB and other CSS colour formats.</div>
+</section>
+
+<section class="card" id="box">
+  <h2>5. Understanding the CSS box model</h2>
+  <p>Every normal HTML element can be understood as a box with content, padding, border and margin.</p>
+
+  <pre><code>.card {
+  width: 250px;
+  padding: 20px;
+  border: 2px solid white;
+  margin: 15px;
+  box-sizing: border-box;
+}</code></pre>
+
+  <div class="grid">
+    <div class="mini"><h3>Content</h3><p>The text or other material inside.</p></div>
+    <div class="mini"><h3>Padding</h3><p>Space between content and border.</p></div>
+    <div class="mini"><h3>Border</h3><p>The edge around the element.</p></div>
+    <div class="mini"><h3>Margin</h3><p>Space outside the border.</p></div>
+  </div>
+</section>
+
+<section class="card" id="flex">
+  <h2>6. CSS Flexbox</h2>
+  <p>Flexbox helps arrange elements in a row or column.</p>
+
+  <pre><code>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}</code></pre>
+
+  <ul>
+    <li><code>display: flex</code> creates a flex container.</li>
+    <li><code>justify-content</code> controls alignment along the main axis.</li>
+    <li><code>align-items</code> controls alignment along the cross axis.</li>
+    <li><code>gap</code> adds space between items.</li>
+    <li><code>flex-wrap</code> allows items to move onto another line.</li>
+  </ul>
+</section>
+
+<section class="card" id="grid">
+  <h2>7. CSS Grid</h2>
+  <p>Grid is useful for layouts with rows and columns.</p>
+
+  <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}</code></pre>
+
+  <p>This creates three equal-width columns with space between them.</p>
+
+  <div class="tip">Use Flexbox for many one-dimensional layouts and Grid for two-dimensional layouts. They can also work together.</div>
+</section>
+
+<section class="card" id="responsive">
+  <h2>8. Responsive web design</h2>
+  <p>Responsive design helps a webpage adapt to different screen sizes.</p>
+
+  <pre><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+
+  <p>When the screen width is 700 pixels or less, the cards become one column.</p>
+</section>
+
+<section class="card" id="project">
+  <h2>9. Build your first styled webpage</h2>
+  <p>Create an HTML file and add this example. Save it as <code>my-page.html</code> and open it in your browser.</p>
+
+  <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My First Styled Page&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial;
+      background: #eef2ff;
+      padding: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 450px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #3949ab;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="card"&gt;
+    &lt;h1&gt;Hello, CSS!&lt;/h1&gt;
+    &lt;p&gt;I am learning web design.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<section class="card" id="practice">
+  <h2>10. Try CSS yourself</h2>
+  <p>Change the CSS in the editor and click Run Code to see the result.</p>
+
+  <textarea id="editor" spellcheck="false"><!doctype html>
+<html>
+<head>
+<style>
+body {
+  background: #eef2ff;
+  font-family: Arial;
+  text-align: center;
+  padding: 30px;
+}
+h1 {
+  color: blue;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Hello CSS!</h1>
+<p>Change my design.</p>
+</div>
+</body>
+</html></textarea>
+
+  <br>
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+  <iframe id="preview" title="CSS practice preview" sandbox=""></iframe>
+</section>
+
+<section class="card" id="quiz">
+  <h2>11. CSS Practice Centre</h2>
+  <p>Choose a quiz. Har quiz mein 10 questions hain. Total 40 questions available hain.</p>
+
+  <div id="quizMenu">
+    <div class="quiz-card">
+      <h3>Quiz 1: CSS Basics</h3>
+      <p>Test your knowledge of CSS fundamentals and syntax.</p>
+      <button onclick="startQuiz(0)">Start Quiz 1</button>
+    </div>
+
+    <div class="quiz-card">
+      <h3>Quiz 2: Selectors and Properties</h3>
+      <p>Practise selectors, colours, fonts and CSS properties.</p>
+      <button onclick="startQuiz(1)">Start Quiz 2</button>
+    </div>
+
+    <div class="quiz-card">
+      <h3>Quiz 3: Box Model, Flexbox and Grid</h3>
+      <p>Check your understanding of layouts and spacing.</p>
+      <button onclick="startQuiz(2)">Start Quiz 3</button>
+    </div>
+
+    <div class="quiz-card">
+      <h3>Quiz 4: Responsive Design</h3>
+      <p>Learn about media queries and responsive layouts.</p>
+      <button onclick="startQuiz(3)">Start Quiz 4</button>
+    </div>
+  </div>
+
+  <div id="quizArea" hidden>
+    <h3 id="quizTitle"></h3>
+    <p id="questionNumber"></p>
+
+    <div class="quiz-progress">
+      <div id="quizProgressBar"></div>
+    </div>
+
+    <h3 id="questionText"></h3>
+    <div id="quizOptions"></div>
+
+    <p id="quizFeedback" aria-live="polite">Choose an answer.</p>
+
+    <button id="nextQuestion" onclick="nextQuizQuestion()" disabled>
+      Next Question
+    </button>
+
+    <button onclick="backToQuizzes()">Back to Quizzes</button>
+  </div>
+
+  <div id="quizResult" hidden>
+    <h3>Quiz Completed!</h3>
+    <p id="finalScore"></p>
+    <p id="resultMessage"></p>
+    <button onclick="backToQuizzes()">Choose Another Quiz</button>
+    <button onclick="restartQuiz()">Try Again</button>
+  </div>
+</section>
+
+<section class="card" id="faq">
+  <h2>12. Frequently asked questions</h2>
+
+  <h3>Is CSS a programming language?</h3>
+  <p>CSS is a style sheet language used to describe how HTML documents should look.</p>
+
+  <h3>Can I learn CSS for free?</h3>
+  <p>Yes. You can practise CSS using a free text editor and browser.</p>
+
+  <h3>What should I learn before CSS?</h3>
+  <p>Basic HTML knowledge makes learning CSS easier.</p>
+
+  <h3>What should I learn after CSS?</h3>
+  <p>JavaScript is a useful next step for adding interactive behaviour to webpages.</p>
+
+  <h3>What is the difference between Flexbox and Grid?</h3>
+  <p>Flexbox is mainly one-dimensional, while Grid is designed for rows and columns together.</p>
+</section>
+
+<section class="card">
+  <h2>Continue learning with SkillSphere</h2>
+  <p>After CSS, explore HTML and JavaScript tutorials.</p>
+  <a class="btn" href="/">Return to SkillSphere</a>
+  <a class="btn" href="/html-tutorial.html">Learn HTML</a>
+  <a class="btn" href="/javascript-tutorial.html">Learn JavaScript</a>
+</section>
+
+</article>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>SkillSphere</strong> · Free learning resources for curious learners. ·
+    <a href="/">Return to homepage</a>
+  </div>
+</footer>
+
+<script>
+/* CSS LIVE PRACTICE EDITOR */
+
+const originalCode = document.getElementById("editor").value;
+
+function runCode() {
+  const preview = document.getElementById("preview");
+  preview.srcdoc = document.getElementById("editor").value;
+}
+
+function resetCode() {
+  document.getElementById("editor").value = originalCode;
+  runCode();
+}
+
+runCode();
+
+
+/* FOUR CSS QUIZZES - 10 QUESTIONS EACH */
+
+const quizSets = [
+  {
+    title: "Quiz 1: CSS Basics",
+    questions: [
+      ["What does CSS stand for?", ["Creative Style System", "Cascading Style Sheets", "Computer Style Sheets"], 1],
+      ["What is the main purpose of CSS?", ["To style webpages", "To store data", "To create databases"], 0],
+      ["Which language creates webpage structure?", ["CSS", "HTML", "SQL"], 1],
+      ["Which symbol is used for a class selector?", ["#", ".", "*"], 1],
+      ["Which symbol is used for an ID selector?", [".", "#", "&"], 1],
+      ["Which brackets contain CSS declarations?", ["( )", "[ ]", "{ }"], 2],
+      ["Which character ends a CSS declaration?", [":", ";", ","], 1],
+      ["Which property changes text size?", ["font-size", "text-style", "size-text"], 0],
+      ["Which property changes text colour?", ["background", "color", "font-weight"], 1],
+      ["Which file extension is used for CSS files?", [".html", ".js", ".css"], 2]
+    ]
+  },
+
+  {
+    title: "Quiz 2: Selectors and Properties",
+    questions: [
+      ["Which selector targets all paragraph elements?", ["p", ".p", "#p"], 0],
+      ["Which selector targets a class named box?", ["#box", ".box", "box()"], 1],
+      ["Which selector targets an ID named header?", [".header", "header", "#header"], 2],
+      ["Which property changes the background colour?", ["background-color", "font-size", "text-align"], 0],
+      ["Which property makes text bold?", ["font-family", "font-weight", "line-height"], 1],
+      ["Which property aligns text to the centre?", ["text-align", "align-text", "position"], 0],
+      ["Which property changes the font family?", ["font-style", "font-family", "font-size"], 1],
+      ["Which CSS value makes text bold?", ["bold", "heavy-text", "strong-font"], 0],
+      ["Which property controls space between lines?", ["letter-spacing", "line-height", "word-spacing"], 1],
+      ["Which CSS property adds rounded corners?", ["border-radius", "corner-style", "round-border"], 0]
+    ]
+  },
+
+  {
+    title: "Quiz 3: Box Model, Flexbox and Grid",
+    questions: [
+      ["Which part of the box model is inside the border?", ["Margin", "Padding", "Outline"], 1],
+      ["Which property creates space outside an element?", ["padding", "margin", "border"], 1],
+      ["Which property creates space inside the border?", ["padding", "margin", "display"], 0],
+      ["Which property creates a border?", ["border", "outline-text", "edge"], 0],
+      ["Which value activates Flexbox?", ["display: grid", "display: flex", "position: flex"], 1],
+      ["Which property controls spacing between flex items?", ["gap", "font-size", "color"], 0],
+      ["Which property aligns flex items on the cross axis?", ["align-items", "text-align", "font-weight"], 0],
+      ["Which value activates CSS Grid?", ["display: table", "display: grid", "display: block"], 1],
+      ["Which property defines Grid columns?", ["grid-template-columns", "grid-columns-size", "column-color"], 0],
+      ["What does 1fr represent in CSS Grid?", ["One fixed pixel", "One fraction of available space", "One font size"], 1]
+    ]
+  },
+
+  {
+    title: "Quiz 4: Responsive Design",
+    questions: [
+      ["What is responsive web design?", ["A page that adapts to screen sizes", "A page with only animations", "A page without CSS"], 0],
+      ["Which CSS feature is used for responsive breakpoints?", ["@media", "@font", "@screen"], 0],
+      ["Which HTML tag helps set the mobile viewport?", ["meta viewport", "style", "footer"], 0],
+      ["Which unit is relative to the root font size?", ["px", "rem", "cm"], 1],
+      ["Which unit is relative to the parent font size?", ["em", "px", "mm"], 0],
+      ["Which property helps images fit their container?", ["max-width", "font-weight", "text-align"], 0],
+      ["What does this query target: @media (max-width: 700px)?", ["Screens wider than 700px", "Screens up to 700px wide", "Only printers"], 1],
+      ["Which layout can automatically create responsive columns?", ["CSS Grid", "HTML comments", "Text decoration"], 0],
+      ["Which property allows flex items to move to another line?", ["flex-wrap", "flex-colour", "flex-font"], 0],
+      ["Why should websites be tested on different screen sizes?", ["To check responsive behaviour", "To change HTML into CSS", "To remove all images"], 0]
+    ]
+  }
+];
+
+
+/* QUIZ STATE */
+
+let currentQuiz = 0;
+let currentQuestion = 0;
+let quizScore = 0;
+let questionAnswered = false;
+
+
+/* START A QUIZ */
+
+function startQuiz(index) {
+  currentQuiz = index;
+  currentQuestion = 0;
+  quizScore = 0;
+  questionAnswered = false;
+
+  document.getElementById("quizMenu").hidden = true;
+  document.getElementById("quizResult").hidden = true;
+  document.getElementById("quizArea").hidden = false;
+
+  document.getElementById("quizTitle").textContent =
+    quizSets[currentQuiz].title;
+
+  showQuizQuestion();
+}
+
+
+/* DISPLAY QUESTION */
+
+function showQuizQuestion() {
+  const quiz = quizSets[currentQuiz];
+  const question = quiz.questions[currentQuestion];
+
+  questionAnswered = false;
+
+  document.getElementById("questionNumber").textContent =
+    "Question " + (currentQuestion + 1) + " of " + quiz.questions.length;
+
+  document.getElementById("questionText").textContent = question[0];
+
+  document.getElementById("quizFeedback").textContent =
+    "Choose your answer.";
+
+  document.getElementById("nextQuestion").disabled = true;
+
+  document.getElementById("nextQuestion").textContent =
+    currentQuestion === quiz.questions.length - 1
+      ? "Finish Quiz"
+      : "Next Question";
+
+  document.getElementById("quizProgressBar").style.width =
+    ((currentQuestion) / quiz.questions.length * 100) + "%";
+
+  const optionsArea = document.getElementById("quizOptions");
+  optionsArea.innerHTML = "";
+
+  question[1].forEach((option, index) => {
+    const button = document.createElement("button");
+
+    button.className = "quiz-option";
+    button.textContent = option;
+    button.type = "button";
+
+    button.onclick = function() {
+      checkQuizAnswer(index);
+    };
+
+    optionsArea.appendChild(button);
+  });
+}
+
+
+/* CHECK ANSWER */
+
+function checkQuizAnswer(selectedIndex) {
+  if (questionAnswered) return;
+
+  questionAnswered = true;
+
+  const question = quizSets[currentQuiz].questions[currentQuestion];
+  const correctIndex = question[2];
+  const buttons = document.querySelectorAll("#quizOptions button");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === correctIndex) {
+      button.classList.add("correct");
+    }
+
+    if (index === selectedIndex && index !== correctIndex) {
+      button.classList.add("wrong");
+    }
+  });
+
+  if (selectedIndex === correctIndex) {
+    quizScore++;
+
+    document.getElementById("quizFeedback").textContent =
+      "Correct! Well done.";
+  } else {
+    document.getElementById("quizFeedback").textContent =
+      "Not quite. Correct answer: " + question[1][correctIndex];
+  }
+
+  document.getElementById("nextQuestion").disabled = false;
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuizQuestion() {
+  if (!questionAnswered) return;
+
+  currentQuestion++;
+
+  if (currentQuestion >= quizSets[currentQuiz].questions.length) {
+    showQuizResult();
+    return;
+  }
+
+  showQuizQuestion();
+}
+
+
+/* SHOW FINAL SCORE */
+
+function showQuizResult() {
+  document.getElementById("quizArea").hidden = true;
+  document.getElementById("quizResult").hidden = false;
+
+  const total = quizSets[currentQuiz].questions.length;
+  const percentage = Math.round((quizScore / total) * 100);
+
+  document.getElementById("finalScore").textContent =
+    "Your score: " + quizScore + " / " + total + " (" + percentage + "%)";
+
+  let message = "";
+
+  if (percentage === 100) {
+    message = "Excellent! You answered every question correctly.";
+  } else if (percentage >= 70) {
+    message = "Great work! You have a good understanding of this topic.";
+  } else if (percentage >= 40) {
+    message = "Good effort! Review the lessons and try again.";
+  } else {
+    message = "Keep practising. You can improve with another attempt.";
+  }
+
+  document.getElementById("resultMessage").textContent = message;
+}
+
+
+/* BACK TO QUIZ MENU */
+
+function backToQuizzes() {
+  document.getElementById("quizArea").hidden = true;
+  document.getElementById("quizResult").hidden = true;
+  document.getElementById("quizMenu").hidden = false;
+}
+
+
+/* RESTART CURRENT QUIZ */
+
+function restartQuiz() {
+  startQuiz(currentQuiz);
+}
+
+</script>
+
+</body>
+</html>
