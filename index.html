@@ -723,18 +723,23 @@
       }
     }
 
-    const lessons = {
-      HTML: "HTML webpage ka structure banata hai. Example: <h1>Hello</h1>",
-      CSS: "CSS webpage ko style karta hai. Example: color: blue;",
-      JavaScript: "JavaScript webpage ko interactive banata hai. Example: button clicks."
-    };
+   const lessons = {
+  HTML: "HTML webpage ka structure banata hai.",
+  CSS: "CSS webpage ko style karta hai.",
+  JavaScript: "JavaScript webpage ko interactive banata hai."
+};
 
-    function showLesson(skill) {
+function showLesson(skill) {
   if (skill === "HTML") {
     window.location.href = "/html-tutorial.html";
-    return;
+  } 
+  else if (skill === "CSS") {
+    window.location.href = "/css-tutorial.html";
+  } 
+  else if (skill === "JavaScript") {
+    window.location.href = "/javascript-tutorial.html";
   }
-
+}
   document.getElementById("skill-lesson").textContent =
     lessons[skill];
     }
