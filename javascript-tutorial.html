@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Tutorial | SkillSphere</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: #f1f5f9;
+  line-height: 1.7;
+}
+
+header {
+  background: #111a30;
+  padding: 25px;
+  text-align: center;
+  border-bottom: 1px solid #273653;
+}
+
+header h1 {
+  color: #a78bfa;
+  font-size: 32px;
+}
+
+header p {
+  color: #cbd5e1;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #7c3aed;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.lesson {
+  background: #151e33;
+  border: 1px solid #293750;
+  padding: 22px;
+  margin: 20px 0;
+  border-radius: 14px;
+}
+
+h2 {
+  color: #a78bfa;
+}
+
+code {
+  color: #67e8f9;
+}
+
+pre {
+  background: #080d18;
+  padding: 15px;
+  border-radius: 10px;
+  overflow-x: auto;
+  color: #67e8f9;
+}
+
+button {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: #6d28d9;
+}
+
+.output {
+  background: #080d18;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #4ade80;
+  min-height: 40px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  margin: 8px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚡ JavaScript Tutorial</h1>
+  <p>Learn JavaScript from zero with SkillSphere</p>
+  <a class="back" href="/">← Back to SkillSphere</a>
+</header>
+
+<div class="container">
+
+  <div class="lesson">
+    <h2>1. What is JavaScript?</h2>
+    <p>JavaScript ek programming language hai jo websites ko interactive banati hai.</p>
+    <ul>
+      <li>Buttons ko working banana</li>
+      <li>Calculations karna</li>
+      <li>Games banana</li>
+      <li>User ke input ka response dena</li>
+    </ul>
+  </div>
+
+  <div class="lesson">
+    <h2>2. Variables</h2>
+    <p>Variables data store karne ke liye use hote hain.</p>
+
+<pre>
+let name = "Student";
+const age = 12;
+
+console.log(name);
+console.log(age);
+</pre>
+
+    <p><code>let</code> ki value change ho sakti hai. <code>const</code> ko dobara assign nahi kar sakte.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>3. Data Types</h2>
+<pre>
+let name = "Moqtadir"; // String
+let age = 12;           // Number
+let isStudent = true;    // Boolean
+let score = null;       // Null
+</pre>
+    <p>Data types batate hain ki variable mein kis type ka data store hai.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>4. Operators</h2>
+<pre>
+let a = 10;
+let b = 5;
+
+console.log(a + b); // 15
+console.log(a - b); // 5
+console.log(a * b); // 50
+console.log(a / b); // 2
+</pre>
+    <p>Operators calculations aur comparisons karne ke kaam aate hain.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>5. Conditions (if / else)</h2>
+<pre>
+let marks = 80;
+
+if (marks >= 40) {
+  console.log("Pass");
+} else {
+  console.log("Fail");
+}
+</pre>
+    <p>Conditions ke through program decisions leta hai.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>6. Functions</h2>
+<pre>
+function greet() {
+  console.log("Hello Student!");
+}
+
+greet();
+</pre>
+    <p>Function reusable code ka block hota hai, jise baar-baar call kar sakte hain.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>7. Loops</h2>
+<pre>
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+</pre>
+    <p>Loops kisi kaam ko baar-baar repeat karne ke liye use hote hain.</p>
+  </div>
+
+  <div class="lesson">
+    <h2>8. Interactive JavaScript Demo</h2>
+    <p>Apna naam likho aur button dabao. JavaScript tumhe response degi.</p>
+
+    <input id="studentName" type="text" placeholder="Enter your name">
+
+    <button onclick="greetStudent()">Click Me</button>
+
+    <div id="demoOutput" class="output">Output yahan dikhega.</div>
+  </div>
+
+  <div class="lesson">
+    <h2>9. Practice Challenge</h2>
+    <p>Khud se ek program banane ki koshish karo:</p>
+    <ul>
+      <li>Ek variable mein apna naam store karo.</li>
+      <li>Ek variable mein apni class store karo.</li>
+      <li>Console mein dono print karo.</li>
+      <li>Ek function banao jo welcome message dikhaye.</li>
+    </ul>
+  </div>
+
+  <div class="lesson">
+    <h2>10. What's Next?</h2>
+    <p>Ab tum JavaScript ke basic concepts jaante ho. In concepts ka use karke calculator, quiz, interactive webpage aur chhote projects bana sakte ho.</p>
+    <a class="back" href="/">SkillSphere Home</a>
+  </div>
+
+</div>
+
+<footer>
+  © SkillSphere | Learn • Code • Build 🚀
+</footer>
+
+<script>
+function greetStudent() {
+  const name = document.getElementById("studentName").value.trim();
+  const output = document.getElementById("demoOutput");
+
+  if (name === "") {
+    output.textContent = "Please apna naam likho!";
+  } else {
+    output.textContent = "Hello " + name + "! Welcome to JavaScript 🚀";
+  }
+}
+</script>
+
+</body>
+</html>
