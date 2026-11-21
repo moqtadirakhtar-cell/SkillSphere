@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -25,26 +24,20 @@ app.use(express.json({ limit: "20kb" }));
 
 // robots.txt
 app.get("/robots.txt", (req, res) => {
-  res.set("Cache-Control", "no-store");
-  res.type("text/plain");
+  res.status(200);
+  res.set("Content-Type", "text/plain; charset=utf-8");
+  res.set("Cache-Control", "public, max-age=3600");
 
   res.send(
-    "User-agent: Google-InspectionTool\n" +
-    "Allow: /\n\n" +
-    "User-agent: Googlebot\n" +
-    "Allow: /\n\n" +
     "User-agent: *\n" +
     "Allow: /\n\n" +
-    "Sitemap: https://skillsphere-1fzr.onrender.com/sitemap.xml"
+    "Sitemap: https://skillsphere-1fzr.onrender.com/sitemap.xml\n"
   );
 });
 
 // sitemap.xml
 app.get("/sitemap.xml", (req, res) => {
-  res.set("Cache-Control", "no-store");
-  res.type("application/xml");
-
-  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://skillsphere-1fzr.onrender.com/</loc>
@@ -58,7 +51,13 @@ app.get("/sitemap.xml", (req, res) => {
   <url>
     <loc>https://skillsphere-1fzr.onrender.com/javascript-tutorial.html</loc>
   </url>
-</urlset>`);
+</urlset>`;
+
+  res.status(200);
+  res.set("Content-Type", "application/xml; charset=utf-8");
+  res.set("Cache-Control", "public, max-age=3600");
+
+  res.send(sitemap);
 });
 
 // ==========================================
